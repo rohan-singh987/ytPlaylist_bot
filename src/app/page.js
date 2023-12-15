@@ -12,30 +12,34 @@ const Page = () => {
   const addToQueue = (video) => {
     console.log(video);
     setVideoList([...videoList, video])
-    if(currVideoId == null)
-    {
+    if (currVideoId == null) {
       setCurrVideoId(video.id.videoId)
     }
   }
 
   const nextSong = () => {
-    setVideoList(videoList.slice(1))    
-    if (videoList.length > 0) {
-      setCurrVideoId(videoList[0].id.videoId)
-    }
+    setCurrVideoId(videoList[1].id.videoId)
+    setVideoList(videoList.slice(1))
+      console.log(currVideoId);
+    
   }
+
+  console.log("videoList ------>", videoList);
+  console.log("currvideoID ------>", currVideoId);
 
   return (
     <div className='max-w-screen-2xl mx-auto'>
       <main className='m-10'>
-      <InputBox addQueue={addToQueue} />
-      {
-        videoList.length > 0 
-        &&
-        <Player videoId={currVideoId} nextSong={nextSong} />
-      }
+        <InputBox addQueue={addToQueue} />
+        <div className='flex md:flex-row flex-col gap-10'>
+          {
+            videoList.length > 0
+            &&
+            <Player videoId={currVideoId} nextSong={nextSong} />
+          }
 
-      <Queue list={videoList} />
+          <Queue list={videoList} />
+        </div>
       </main>
     </div>
   )

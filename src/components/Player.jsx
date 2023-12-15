@@ -1,12 +1,12 @@
 import React from 'react'
-import ReactPlayer from 'react-player/youtube'
+import ReactPlayer from 'react-player'
 
 const Player = ({ videoId, nextSong }) => {
 
     const videoURL = "https://www.youtube.com/watch?v=" + videoId
 
-  return (
-    <div className="">
+    return (
+        <div className="">
             <ReactPlayer
                 url={videoURL}
                 playing={true}
@@ -14,9 +14,10 @@ const Player = ({ videoId, nextSong }) => {
                 config={{
                     youtube: {
                         playerVars: {
-                            autoplay: 1,
-                            controls: 1
-                        }
+                            autoPlay: 1,
+                            controls:1
+                        },
+                        onUnstarted: nextSong
                     }
                 }}
             />
