@@ -11,12 +11,13 @@ const InputBox = ({ addQueue }) => {
     console.log(response.data.items[0].id.videoId);
     addQueue(response.data.items[0]);
   }
-
+  
   const handleSearch = (e) => {
-      if(e.key == 'Enter')
-      {
-        searchSong(songInput)
-      }
+    if(e.key == 'Enter')
+    {
+      searchSong(songInput)
+      setSongInput("")
+    }
   }
 
   return (
